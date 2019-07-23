@@ -18,11 +18,11 @@ function App() {
   const [cart, setCart] = useLocalStorage('shoppingCart', []);
 
   const addItem = item => {
-    setCart([...cart, item]);
+    setCart([...cart, { ...item, cartIndex: cart.length }]);
   };
 
-  const removeItemById = id => {
-    setCart([...cart.filter(cartItem => id !== cartItem.id)]);
+  const removeItemById = cartIndex => {
+    setCart([...cart.filter(cartItem => cartIndex !== cartItem.cartIndex)]);
   };
 
   return (
